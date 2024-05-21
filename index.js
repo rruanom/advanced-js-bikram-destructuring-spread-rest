@@ -5,12 +5,12 @@ const empleados = [
     { name: "Ana", email: "Ana@gmail.com" },
     { name: "Andrea", email: "Andrea@gmail.com" },
 ];
-const empleadaAna = empleados[1];
-console.log(empleadaAna);
+const ana = empleados[1];
+console.log(ana);
 
 //2.- Dado el objeto **empleados**, extrae el email del empleado Luis --> Luis@gmail.com
-const mailLuis = empleados[0].email;
-console.log(mailLuis);
+const emailLuis = empleados[0].email;
+console.log(emailLuis);
 
 //3.- Usa destructuración para cambiar los valores de a y b;
 /* Inicialmente
@@ -114,3 +114,29 @@ argumentos y los combine todos en un solo array.
 combineAllArrays([3, 6, 7, 8], [2, 7, 3, 1]); // [3, 6, 7, 8, 2, 7, 3, 1]
 combineAllArrays([2, 7, 3, 1], [2, 7, 4, 12], [2, 44, 22, 7, 3, 1]); // [2, 7, 3, 1, 2, 7, 4, 12, 2, 44, 22, 7, 3, 1]
 */
+function combineAllArrays(...listas){
+    let listaFinal = [];
+    for (let i = 0; i < listas.length; i++){
+        listaFinal = listaFinal.concat(listas[i]);
+    }
+    return listaFinal;
+}
+console.log(combineAllArrays([3, 6, 7, 8], [2, 7, 3, 1]));
+console.log(combineAllArrays([2, 7, 3, 1], [2, 7, 4, 12], [2, 44, 22, 7, 3, 1]));
+
+/*11.- Escriba una función llamada **sumAndSquare** que reciba cualquier número de argumentos, los eleve al 
+cuadrado y devuelva la suma de todos los valores cuadrados.
+*/ //NO TERMINADO
+function sumAndSquare(...numeros){
+    let numerosCuadrado = [];
+    let suma = 0;
+    for (let i = 0; i < numeros.length; i++){
+        let numCuadrado = numeros[i] * numeros[i];
+        numerosCuadrado.push(numCuadrado);
+    }
+    for (let i = 0; i < numerosCuadrado.length; i++){
+        suma += numerosCuadrado[i];
+    }
+    return suma;
+}
+console.log(sumAndSquare(2, 3, 5));
