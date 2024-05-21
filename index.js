@@ -5,11 +5,12 @@ const empleados = [
     { name: "Ana", email: "Ana@gmail.com" },
     { name: "Andrea", email: "Andrea@gmail.com" },
 ];
-const ana = empleados[1];
+//const ana = empleados[1];
+const {luis, ana, andrea} = empleados;
 console.log(ana);
 
 //2.- Dado el objeto **empleados**, extrae el email del empleado Luis --> Luis@gmail.com
-const emailLuis = empleados[0].email;
+const {email: emailLuis} = luis;
 console.log(emailLuis);
 
 //3.- Usa destructuración para cambiar los valores de a y b;
@@ -116,9 +117,9 @@ combineAllArrays([2, 7, 3, 1], [2, 7, 4, 12], [2, 44, 22, 7, 3, 1]); // [2, 7, 3
 */
 function combineAllArrays(...listas){
     let listaFinal = [];
-    for (let i = 0; i < listas.length; i++){
-        listaFinal = listaFinal.concat(listas[i]);
-    }
+    listas.forEach((e)=>{
+        listaFinal = listaFinal.concat(e);
+    })
     return listaFinal;
 }
 console.log(combineAllArrays([3, 6, 7, 8], [2, 7, 3, 1]));
@@ -130,13 +131,13 @@ cuadrado y devuelva la suma de todos los valores cuadrados.
 function sumAndSquare(...numeros){
     let numerosCuadrado = [];
     let suma = 0;
-    for (let i = 0; i < numeros.length; i++){
-        let numCuadrado = numeros[i] * numeros[i];
+    numeros.forEach ((e)=>{
+        let numCuadrado = e * e;
         numerosCuadrado.push(numCuadrado);
-    }
+    })
     for (let i = 0; i < numerosCuadrado.length; i++){
         suma += numerosCuadrado[i];
     }
-    return suma;
+    return suma;// usar .reduce!
 }
 console.log(sumAndSquare(2, 3, 5));
